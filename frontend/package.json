@@ -1,29 +1,32 @@
 {
-  "name": "frontend",
   "name": "darukaa-earth-frontend",
   "private": true,
-  "version": "0.0.0",
   "version": "0.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc && vite build",
     "build": "vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "@eslint/js": "^10.0.1",
     "@vitejs/plugin-react": "^6.1.1",
-    "typescript": "~6.0.2",
+    "eslint": "^10.10.0",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.7",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
+    "prettier": "^3.9.7",
     "vite": "^8.3.0"
   },
   "dependencies": {
+    "@mapbox/mapbox-gl-draw": "^1.5.2",
+    "chart.js": "^4.5.1",
     "lucide-react": "^1.46.0",
+    "mapbox-gl": "^3.30.0",
     "react": "^19.3.0",
+    "react-chartjs-2": "^5.3.1",
     "react-dom": "^19.3.0",
     "react-router-dom": "^7.18.4"
-  },
-  "devDependencies": {
-    "@vitejs/plugin-react": "^6.1.1",
-    "vite": "^8.3.0"
   }
 }

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 /**
  * Custom Hook: useGeospatial (Placeholder)
- * 
+ *
  * Provides state structure for future Mapbox vector layers, bounding boxes,
  * and telemetry streams.
  */
@@ -17,9 +17,8 @@ export function useGeospatial() {
     selectedCoordinates,
     setSelectedCoordinates,
     isLoading,
-    setIsLoading
+    setIsLoading,
   }
 }
 
 export default useGeospatial
-

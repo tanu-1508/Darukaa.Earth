@@ -1,25 +1,39 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Globe, ArrowRight } from 'lucide-react'
+import { apiService } from '../services/api.js'
 
 export default function Register() {
   const [fullName, setFullName] = useState('')
   const [organization, setOrganization] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Placeholder interaction: Navigate to dashboard
-    navigate('/')
+    setError('')
+    setIsSubmitting(true)
+    try {
+      await apiService.register({ name: fullName, email, password })
+      navigate('/login')
+    } catch (err) {
+      setError(err.message)
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
     <div className="auth-wrapper">
       <div className="auth-card">
         <div className="auth-header">
-          <div className="brand" style={{ justifyContent: 'center', marginBottom: '1rem' }}>
+          <div
+            className="brand"
+            style={{ justifyContent: 'center', marginBottom: '1rem' }}
+          >
             <div className="brand-icon">
               <Globe size={22} />
             </div>
@@ -27,8 +41,16 @@ export default function Register() {
               Darukaa<span>.Earth</span>
             </div>
           </div>
-          <h2 style={{ fontSize: '1.4rem', fontWeight: 700 }}>Register Organization</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.875rem', marginTop: '0.25rem' }}>
+          <h2 style={{ fontSize: '1.4rem', fontWeight: 700 }}>
+            Register Organization
+          </h2>
+          <p
+            style={{
+              color: 'var(--text-muted)',
+              fontSize: '0.875rem',
+              marginTop: '0.25rem',
+            }}
+          >
             Start monitoring land, environmental metrics, and satellite layers.
           </p>
         </div>
@@ -86,17 +108,31 @@ export default function Register() {
             />
           </div>
 
-          <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '0.5rem' }}>
-            <span>Create Account</span>
+          {error && (
+            <p role="alert" style={{ color: '#f87171', fontSize: '0.85rem' }}>
+              {error}
+            </p>
+          )}
+          <button
+            type="submit"
+            className="btn btn-primary"
+            style={{ width: '100%', marginTop: '0.5rem' }}
+            disabled={isSubmitting}
+          >
+            <span>
+              {isSubmitting ? 'Creating Account...' : 'Create Account'}
+            </span>
             <ArrowRight size={16} />
           </button>
         </form>
 
         <div className="auth-footer">
-          Already have an account?{' '}
-          <Link to="/login">Sign In</Link>
+          Already have an account? <Link to="/login">Sign In</Link>
           <div style={{ marginTop: '0.75rem' }}>
-            <Link to="/" style={{ color: 'var(--text-subdued)', fontSize: '0.8rem' }}>
+            <Link
+              to="/"
+              style={{ color: 'var(--text-subdued)', fontSize: '0.8rem' }}
+            >
               ← Return to Dashboard
             </Link>
           </div>
@@ -105,4 +141,3 @@ export default function Register() {
     </div>
   )
 }
-

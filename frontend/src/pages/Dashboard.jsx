@@ -123,7 +123,9 @@ export default function Dashboard() {
       </div>
 
       <div className="card" style={{ marginTop: '1.5rem' }}>
-        <h3 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem' }}>
+        <h3
+          style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '1rem' }}
+        >
           Projects and Site Boundaries
         </h3>
         {sites.length ? (
@@ -135,7 +137,9 @@ export default function Dashboard() {
           <div className="placeholder-banner">
             <Map size={40} className="banner-icon" />
             <h4>No site boundaries yet</h4>
-            <p>Create a project and add a site boundary to see it on the map.</p>
+            <p>
+              Create a project and add a site boundary to see it on the map.
+            </p>
           </div>
         )}
       </div>

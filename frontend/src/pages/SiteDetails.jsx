@@ -207,7 +207,8 @@ export default function SiteDetails() {
           fontSize: '0.85rem',
         }}
       >
-        Demo Spectral Analysis: deterministic mock carbon, biodiversity, and vegetation values generated from the stored site geometry.
+        Demo Spectral Analysis: deterministic mock carbon, biodiversity, and
+        vegetation values generated from the stored site geometry.
       </div>
 
       <div className="grid-stats">
